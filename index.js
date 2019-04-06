@@ -81,3 +81,5 @@ function getGlobalEventHandlers(filter = '', hasOwnProperty = true,  noEmptyArra
 
     return result;
 }
+
+module.exports = getGlobalEventHandlers;
