@@ -1,0 +1,25 @@
+{
+  "name": "global-event-handlers",
+  "version": "1.0.0",
+  "description": "GlobalEventHandlers mapped out completely cross browsers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weizman/global-event-handlers.git"
+  },
+  "keywords": [
+    "global",
+    "event",
+    "handlers",
+    "map"
+  ],
+  "author": "weizman gal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weizman/global-event-handlers/issues"
+  },
+  "homepage": "https://github.com/weizman/global-event-handlers#readme"
+}
