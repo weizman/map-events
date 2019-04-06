@@ -26,14 +26,13 @@ function _getGlobalEventHandlers(obj, hasOwnProperty = true) {
 }
 
 
-function getGlobalEventHandlers(filter = '', hasOwnProperty = true,  noEmptyArrays = false, debug = false) {
+function getGlobalEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArrays = false, debug = false) {
     var result = {};
 
     var arr = Object.getOwnPropertyNames(window);
 
-    // support '*' as part of the API
     if ('*' === filter) {
-        filter = '';
+        filter = ''; // would always exist in any string possible
     }
 
     for (var i = 0; i < arr.length; i++) {
