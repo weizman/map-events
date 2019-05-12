@@ -1,7 +1,7 @@
 // written in ES5 in order to support all browsers
-// calling extractGlobalEventHandlers() will return a map of supported global event handlers in the browser
+// calling extractEventHandlers() will return a map of supported  event handlers in the browser
 
-function _isGlobalEventHandler(prop) {
+function _isEventHandler(prop) {
     if (0 !== prop.indexOf('on')) {
         return false;
     }
@@ -9,7 +9,7 @@ function _isGlobalEventHandler(prop) {
     return true;
 }
 
-function _getGlobalEventHandlers(obj, hasOwnProperty = true) {
+function _getEventHandlers(obj, hasOwnProperty = true) {
     var result = [];
 
     for (var prop in obj) {
@@ -17,7 +17,7 @@ function _getGlobalEventHandlers(obj, hasOwnProperty = true) {
             continue;
         }
 
-        if (_isGlobalEventHandler(prop)) {
+        if (_isEventHandler(prop)) {
             result.push(prop);
         }
     }
@@ -26,7 +26,7 @@ function _getGlobalEventHandlers(obj, hasOwnProperty = true) {
 }
 
 
-function getGlobalEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArrays = false, debug = false) {
+function getEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArrays = false, debug = false) {
     var result = {};
 
     var arr = Object.getOwnPropertyNames(window);
@@ -53,11 +53,11 @@ function getGlobalEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArr
 
             proto = obj['prototype'];
 
-            resultArray = _getGlobalEventHandlers(proto, hasOwnProperty);
+            resultArray = _getEventHandlers(proto, hasOwnProperty);
 
         } catch (err) {
             if (debug) {
-                console.error(`failed to get global event handlers of %o`, element);
+                console.error(`failed to get  event handlers of %o`, element);
             }
         }
 
@@ -69,7 +69,7 @@ function getGlobalEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArr
     }
 
     if (-1 !== 'window'.indexOf(filter)) {
-        const resultArray = _getGlobalEventHandlers(window, hasOwnProperty);
+        const resultArray = _getEventHandlers(window, hasOwnProperty);
 
         if (resultArray.length === 0 && noEmptyArrays) {
             return result;
@@ -81,4 +81,4 @@ function getGlobalEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArr
     return result;
 }
 
-module.exports = getGlobalEventHandlers;
+module.exports = getEventHandlers;
