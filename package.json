@@ -1,6 +1,6 @@
 {
   "name": "global-event-handlers-map",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "GlobalEventHandlers mapped out completely cross browsers",
   "main": "index.js",
   "scripts": {
