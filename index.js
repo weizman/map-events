@@ -18,6 +18,7 @@ function _getEvents(obj, hasOwnProperty = true) {
         }
 
         if (_isEvent(prop)) {
+            prop = prop.substr(2); // remove "on" at the beginning
             result.push(prop);
         }
     }
