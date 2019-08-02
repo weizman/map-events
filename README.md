@@ -23,9 +23,9 @@ a map of all events in the browser in the following format:
 ```javascript
 {
     'OBJECT': [
-        'onEVENT1',
-        'onEVENT2',
-        'onEVENT3'
+        'EVENT1',
+        'EVENT2',
+        'EVENT3'
     ]
 }
 ```
@@ -39,10 +39,10 @@ const webSocketEventsMap = getEventsMap('WebSocket');
 
 (webSocketEventsMap == {
   "WebSocket": [
-    "onopen",
-    "onerror",
-    "onclose",
-    "onmessage"
+    "open",
+    "error",
+    "close",
+    "message"
   ] // results in true
 });
 ```

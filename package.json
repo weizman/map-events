@@ -1,6 +1,6 @@
 {
   "name": "map-events",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "all types of events mapped out completely cross browsers",
   "main": "index.js",
   "scripts": {
