@@ -1,24 +1,24 @@
-# event-handlers
+# map-events
 
-EventHandlers mapped out [completely](https://weizman.github.io/event-handlers-website/) - cross browsers
+Events mapped out [completely](https://weizman.github.io/map-events-website/) - cross browsers
 
-Using this powerful little tool will map out for you all Event Handlers in any browser you'd wish to execute it on.
+Using this powerful little tool will map out for you all Events in any browser you'd wish to execute it on.
 
 ## installation
 
-`npm install event-handlers --save`
+`npm install map-events --save`
 
 ## usage
 
 ```javascript
-const getEventHandlersMap = require('event-handlers');
+const getEventsMap = require('map-events');
 
-const eventHandlersMap = getEventHandlersMap();
+const EventsMap = getEventsMap();
 ```
 
 ## output
 
-a map of all event handlers in the browser in the following format:
+a map of all events in the browser in the following format:
 
 ```javascript
 {
@@ -33,11 +33,11 @@ a map of all event handlers in the browser in the following format:
 # example
 
 ```javascript
-const getEventHandlersMap = require('event-handlers');
+const getEventsMap = require('map-events');
 
-const webSocketEventHandlersMap = getEventHandlersMap('WebSocket');
+const webSocketEventsMap = getEventsMap('WebSocket');
 
-(webSocketEventHandlersMap == {
+(webSocketEventsMap == {
   "WebSocket": [
     "onopen",
     "onerror",
@@ -47,15 +47,15 @@ const webSocketEventHandlersMap = getEventHandlersMap('WebSocket');
 });
 ```
 
-here's an example of how to register with your own listener to every  event handler that exists on `window`!
+here's an example of how to register with your own listener to every event that exists on `window`!
 
 ```javascript
 
-const windowEventHandlersMap = getEventHandlersMap('window')['window'];
+const windowEventsMap = getEventsMap('window')['window'];
 
-for (let i = 0; i < windowEventHandlersMap.length; i++) {
-  const eventHandler = windowEventHandlersMap[i];
-  window[eventHandler] = (event) => { console.log(event) });
+for (let i = 0; i < windowEventsMap.length; i++) {
+  const event = windowEventsMap[i];
+  window[event] = (event) => { console.log(event) });
 }
 ```
 
@@ -66,11 +66,11 @@ for (let i = 0; i < windowEventHandlersMap.length; i++) {
 allows you to pass a string that must exist within the object in order for it to make it to the final result map:
 
 ```javascript
-const getEventHandlersMap = require('event-handlers');
+const getEventsMap = require('map-events');
 
-const eventHandlersMap = getEventHandlersMap('*'); // will return a non-filtered map
-const eventHandlersMap = getEventHandlersMap('HTML'); // will return a map that only contains objects that contain the string 'HTML' (such as 'HTMLBodyElement')
-const eventHandlersMap = getEventHandlersMap('Doc'); // will return a map that only contains objects that contain the string 'Doc' (such as 'Document')
+const EventsMap = getEventsMap('*'); // will return a non-filtered map
+const EventsMap = getEventsMap('HTML'); // will return a map that only contains objects that contain the string 'HTML' (such as 'HTMLBodyElement')
+const EventsMap = getEventsMap('Doc'); // will return a map that only contains objects that contain the string 'Doc' (such as 'Document')
 ```
 
 default value: `'*'`
@@ -80,23 +80,23 @@ default value: `'*'`
 allows you to pass a boolean that indicates whether iterated object must has iterated property as its own property or not:
 
 ```javascript
-const getEventHandlersMap = require('event-handlers');
+const getEventsMap = require('map-events');
 
-const eventHandlersMap = getEventHandlersMap('*', true); // will return a map with objects and  event handlers properties that are the object's own properties
-const eventHandlersMap = getEventHandlersMap('*', false); // will return a map with objects and  event handlers properties - whether the properties are the object's own properties or not
+const EventsMap = getEventsMap('*', true); // will return a map with objects and  events properties that are the object's own properties
+const EventsMap = getEventsMap('*', false); // will return a map with objects and  events properties - whether the properties are the object's own properties or not
 ```
 
 default value: `true`
 
 3. `noEmptyArrays` (third optional argument)
 
-allows you to pass a boolean that indicates whether final result object should contain objects that have zero  event handlers or not:
+allows you to pass a boolean that indicates whether final result object should contain objects that have zero events or not:
 
 ```javascript
-const getEventHandlersMap = require('event-handlers');
+const getEventsMap = require('map-events');
 
-const eventHandlersMap = getEventHandlersMap('*', true, true); // will return a map with objects and  event handlers properties only if the object even has any  event handlers
-const eventHandlersMap = getEventHandlersMap('*', true, false); // will return a map with objects and  event handlers properties whether the object has any  event handlers or not
+const EventsMap = getEventsMap('*', true, true); // will return a map with objects and events properties only if the object even has any events
+const EventsMap = getEventsMap('*', true, false); // will return a map with objects and events properties whether the object has any events or not
 ```
 
 default value: `false`
@@ -106,22 +106,22 @@ default value: `false`
 allows you to pass a boolean that indicates whether to run module in debug mode or not. debug mode just logs errors in case any are thrown:
 
 ```javascript
-const getEventHandlersMap = require('event-handlers');
+const getEventsMap = require('map-events');
 
-const eventHandlersMap = getEventHandlersMap('*', true, true, true); // will run in debug mode
-const eventHandlersMap = getEventHandlersMap('*', true, false, false); // will not run in debug mode
+const EventsMap = getEventsMap('*', true, true, true); // will run in debug mode
+const EventsMap = getEventsMap('*', true, false, false); // will not run in debug mode
 ```
 
 default value: `false`
 
 ## contribution
 
-in addition to this project there is a [website](https://weizman.github.io/event-handlers-website/) that
-should show the event handlers map of every (os + browser) combination that ever existed.
+in addition to this project there is a [website](https://weizman.github.io/map-events-website/) that
+should show the events map of every (os + browser) combination that ever existed.
 in reality however, it shows most of the existing combinations, but not all of them.
 the maps were extracted using every existing combination in [browserstack](https://browserstack.com), but even
 in browserstack many automatic combinations have failed.
 also, the extraction script is not automatic and does not run every
 time there's a new browser/os.
-contributing to the [JSON](https://github.com/weizman/event-handlers-website/blob/master/data.json) could help a lot with maintaining the map and keeping it as updated and as accurate as possible.
+contributing to the [JSON](https://github.com/weizman/map-events-website/blob/master/data.json) could help a lot with maintaining the map and keeping it as updated and as accurate as possible.
 highly appreciated!

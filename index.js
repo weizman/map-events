@@ -1,7 +1,7 @@
 // written in ES5 in order to support all browsers
-// calling extractEventHandlers() will return a map of supported  event handlers in the browser
+// calling extractEvents() will return a map of supported  events in the browser
 
-function _isEventHandler(prop) {
+function _isEvent(prop) {
     if (0 !== prop.indexOf('on')) {
         return false;
     }
@@ -9,7 +9,7 @@ function _isEventHandler(prop) {
     return true;
 }
 
-function _getEventHandlers(obj, hasOwnProperty = true) {
+function _getEvents(obj, hasOwnProperty = true) {
     var result = [];
 
     for (var prop in obj) {
@@ -17,7 +17,7 @@ function _getEventHandlers(obj, hasOwnProperty = true) {
             continue;
         }
 
-        if (_isEventHandler(prop)) {
+        if (_isEvent(prop)) {
             result.push(prop);
         }
     }
@@ -26,7 +26,7 @@ function _getEventHandlers(obj, hasOwnProperty = true) {
 }
 
 
-function getEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArrays = false, debug = false) {
+function getEvents(filter = '*', hasOwnProperty = true,  noEmptyArrays = false, debug = false) {
     var result = {};
 
     var arr = Object.getOwnPropertyNames(window);
@@ -53,11 +53,11 @@ function getEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArrays = 
 
             proto = obj['prototype'];
 
-            resultArray = _getEventHandlers(proto, hasOwnProperty);
+            resultArray = _getEvents(proto, hasOwnProperty);
 
         } catch (err) {
             if (debug) {
-                console.error(`failed to get  event handlers of %o`, element);
+                console.error(`failed to get events of %o`, element);
             }
         }
 
@@ -69,7 +69,7 @@ function getEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArrays = 
     }
 
     if (-1 !== 'window'.indexOf(filter)) {
-        const resultArray = _getEventHandlers(window, hasOwnProperty);
+        const resultArray = _getEvents(window, hasOwnProperty);
 
         if (resultArray.length === 0 && noEmptyArrays) {
             return result;
@@ -81,4 +81,4 @@ function getEventHandlers(filter = '*', hasOwnProperty = true,  noEmptyArrays = 
     return result;
 }
 
-module.exports = getEventHandlers;
+module.exports = getEvents;

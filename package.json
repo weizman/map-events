@@ -1,23 +1,23 @@
 {
-  "name": "event-handlers",
+  "name": "map-events",
   "version": "1.0.0",
-  "description": "EventHandlers mapped out completely cross browsers",
+  "description": "all types of events mapped out completely cross browsers",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/weizman/event-handlers.git"
+    "url": "git+https://github.com/weizman/map-events.git"
   },
   "keywords": [
     "event",
-    "handlers"
+    "map"
   ],
   "author": "weizman gal",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/weizman/event-handlers/issues"
+    "url": "https://github.com/weizman/map-events/issues"
   },
-  "homepage": "https://weizman.github.io/event-handlers-website/"
+  "homepage": "https://weizman.github.io/map-events-website/"
 }
